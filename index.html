@@ -991,7 +991,7 @@
   </header>
 
   <!-- Mobile Nav -->
-  <div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Мобилно меню">
+  <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Мобилно меню">
     <button class="close-btn" id="mobile-close" aria-label="Затвори менюто">✕</button>
     <a href="#products">Продукти</a>
     <a href="#reviews">Отзиви</a>
@@ -1017,7 +1017,7 @@
         <span class="footnote">* Данните са приблизителни и включват семейства, които не са наясно, че участват.</span>
       </p>
       <div class="hero-image">
-        <img src="img1.png" width="400" height="300" alt="Баба Pro — робот баба с таблет, показващ 30°C, в кухня с баница на масата" decoding="async">
+        <img src="img1.png" width="400" height="300" alt="Баба Pro — робот баба с таблет, показващ 30°C, в кухня с баница на масата" loading="eager" decoding="async">
       </div>
     </section>
 
@@ -1045,7 +1045,10 @@
           </div>
           <h3 class="product-name">Баба Pro</h3>
           <p class="product-body">Баба Pro преосмисля домашния комфорт. С вграден AI алгоритъм за анализ на атмосферни условия и семеен контекст, устройството определя дали си облякъл потника — преди ти да си станал от леглото.</p>
-          <div class="product-specs">Точност на предвиждане: 97,3%* │ Време за реакция: 0,4 сек │ Съвместимост: всички видове потници │ AI модел: BabaGPT v3.1</div>
+          <div class="product-specs">Точност на предвиждане: 97,3%*
+Време за реакция: 0,4 сек
+Съвместимост: всички видове потnici
+AI модел: BabaGPT v3.1</div>
           <p class="product-price">149,99 € <span class="bgn">(293,36 лв.)</span></p>
           <div class="product-cta">
             <button class="btn btn-primary order-btn">Резервирай ранен достъп</button>
@@ -1070,7 +1073,7 @@
           <div class="product-cta">
             <button class="btn btn-primary order-btn">Резервирай ранен достъп</button>
           </div>
-          <p class="product-footnote">* Резултатите варират в зависимост от снахата.</p>
+          <p class="product-footnote">* Резултатите варират. Майките, обаче, не.</p>
         </article>
 
         <!-- ─── PRODUCT 3: Кебапче-компас Ultra ─── Specs-first стил -->
@@ -1080,7 +1083,7 @@
             <img src="img3.png" width="400" height="300" alt="Кебапче-компас Ultra — GPS навигатор с гигантско кебапче като destination, карта от грил следи" loading="lazy" decoding="async">
           </div>
           <h3 class="product-name">Кебапче-компас Ultra</h3>
-          <div class="product-specs">Тип сензор:        олфакторен масив v3
+          <div class="product-specs">Тип сензор:        нос (технологичен)
 Обхват:            до 2,4 км по вятъра
 Точност:           ±3 метра (±47 метра при кебапче от вчера)
 Поддържани обекти: кебапче, кюфте, наденица, скара (mixed)
@@ -1111,7 +1114,7 @@
           <div class="product-cta">
             <button class="btn btn-primary order-btn" disabled aria-disabled="true" title="Изчерпано">Изчерпано</button>
           </div>
-          <p class="product-footnote">* Одобрено по процедура №БГИ-2026-041.</p>
+          <p class="product-footnote">* Одобрено по процедура №БГИ-2026-041. Лелята не е уведомена.</p>
         </article>
 
         <!-- ─── PRODUCT 5: Възглавница-антигравитация ─── Бележка-под-линия стил -->
@@ -1227,6 +1230,13 @@
             <p class="faq-answer-inner">На адреса. Отговаряме на телефона между 14:00 и 14:03 в дни с четна дата.</p>
           </div>
         </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Приемате ли плащане в лева?</button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">Приемаме всичко. Включително натура (буркани, зимнина, домашна ракия).</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1313,10 +1323,10 @@
       /* ── Theme Toggle ── */
       const toggle = document.getElementById('theme-toggle');
       const saved = localStorage.getItem('bg-theme');
-      if (saved) {
-        document.documentElement.setAttribute('data-theme', saved);
-        toggle.textContent = saved === 'dark' ? '☾' : '☀';
-      }
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initialTheme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', initialTheme);
+      toggle.textContent = initialTheme === 'dark' ? '☾' : '☀';
 
       toggle.addEventListener('click', function() {
         const current = document.documentElement.getAttribute('data-theme');
@@ -1343,22 +1353,48 @@
       var mobileNav = document.getElementById('mobile-nav');
       var mobileClose = document.getElementById('mobile-close');
 
+      var mobileNavFocusTrap = null;
+
       hamburger.addEventListener('click', function() {
         mobileNav.classList.add('open');
         hamburger.setAttribute('aria-expanded', 'true');
         mobileClose.focus();
+        // Focus trap
+        var focusable = mobileNav.querySelectorAll('a, button');
+        var firstFocusable = focusable[0];
+        var lastFocusable = focusable[focusable.length - 1];
+        mobileNavFocusTrap = function(e) {
+          if (e.key === 'Tab') {
+            if (e.shiftKey && document.activeElement === firstFocusable) {
+              e.preventDefault();
+              lastFocusable.focus();
+            } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+              e.preventDefault();
+              firstFocusable.focus();
+            }
+          } else if (e.key === 'Escape') {
+            closeMobileNav();
+          }
+        };
+        mobileNav.addEventListener('keydown', mobileNavFocusTrap);
       });
 
-      mobileClose.addEventListener('click', function() {
+      function closeMobileNav() {
         mobileNav.classList.remove('open');
         hamburger.setAttribute('aria-expanded', 'false');
         hamburger.focus();
-      });
+        // Remove focus trap listener
+        if (mobileNavFocusTrap) {
+          mobileNav.removeEventListener('keydown', mobileNavFocusTrap);
+          mobileNavFocusTrap = null;
+        }
+      }
+
+      mobileClose.addEventListener('click', closeMobileNav);
 
       mobileNav.querySelectorAll('a').forEach(function(link) {
         link.addEventListener('click', function() {
-          mobileNav.classList.remove('open');
-          hamburger.setAttribute('aria-expanded', 'false');
+          closeMobileNav();
         });
       });
 
