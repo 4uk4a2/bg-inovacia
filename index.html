@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>БГ Иновации — Продукти, които не знаехте, че ви трябват</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0f1a;
+      --bg-card: #1a1a2e;
+      --fg: #f5f0e8;
+      --fg-muted: #a8a090;
+      --accent-1: #ff6b35;
+      --accent-2: #ffd23f;
+      --accent-3: #4ecdc4;
+      --accent-4: #ff6b9d;
+      --card-border: #2a2a4a;
+      --glow-1: rgba(255, 107, 53, 0.4);
+      --glow-2: rgba(255, 210, 63, 0.3);
+      --glow-3: rgba(78, 205, 196, 0.3);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #fdfbf7;
+        --bg-card: #ffffff;
+        --fg: #1a1a2e;
+        --fg-muted: #5a5550;
+        --card-border: #e8e0d8;
+        --glow-1: rgba(255, 107, 53, 0.2);
+        --glow-2: rgba(255, 210, 63, 0.4);
+        --glow-3: rgba(78, 205, 196, 0.2);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animated background blobs */
+    .bg-blobs {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .blob-1 { width: 400px; height: 400px; background: var(--accent-1); top: -100px; left: -100px; animation-delay: 0s; }
+    .blob-2 { width: 300px; height: 300px; background: var(--accent-2); bottom: 20%; right: -50px; animation-delay: -7s; }
+    .blob-3 { width: 350px; height: 350px; background: var(--accent-3); top: 40%; left: 50%; animation-delay: -14s; }
+    .blob-4 { width: 250px; height: 250px; background: var(--accent-4); bottom: 10%; left: 10%; animation-delay: -5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -20px) scale(1.05); }
+      50% { transform: translate(-20px, 30px) scale(0.95); }
+      75% { transform: translate(25px, 25px) scale(1.02); }
+    }
+
+    /* Sparkles */
+    .sparkles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--accent-2);
+      border-radius: 50%;
+      animation: twinkle 3s ease-in-out infinite;
+      opacity: 0;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Main content */
+    main {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 5rem;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      margin-bottom: 4rem;
+      padding: 2rem 0;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      color: var(--bg);
+      padding: 0.5rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 20px var(--glow-1);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 20px var(--glow-1); }
+      50% { box-shadow: 0 4px 30px var(--glow-2); }
+    }
+
+    .hero h1 {
+      font-family: 'Comfortaa', cursive;
+      font-weight: 900;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--fg) 0%, var(--accent-2) 40%, var(--accent-3) 70%, var(--accent-4) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      text-shadow: none;
+    }
+
+    .hero .subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: var(--fg-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-weight: 400;
+    }
+
+    .hero .tagline {
+      font-family: 'Comfortaa', cursive;
+      font-weight: 700;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--accent-1);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Products Grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+      animation: cardEnter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+    }
+
+    .product-card:nth-child(1) { animation-delay: 0.1s; }
+    .product-card:nth-child(2) { animation-delay: 0.2s; }
+    .product-card:nth-child(3) { animation-delay: 0.3s; }
+    .product-card:nth-child(4) { animation-delay: 0.4s; }
+    .product-card:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes cardEnter {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--accent-1);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px var(--glow-1);
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .product-card:hover::before { opacity: 1; }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,210,63,0.1));
+      border: 2px dashed var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .product-card:hover .product-image img { transform: scale(1.05); }
+
+    .product-image .placeholder {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1rem;
+      font-style: italic;
+    }
+
+    .product-name {
+      font-family: 'Comfortaa', cursive;
+      font-weight: 800;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--fg);
+    }
+
+    .product-name .tm {
+      font-size: 0.6em;
+      vertical-align: super;
+      color: var(--accent-2);
+      font-weight: 400;
+    }
+
+    .product-desc {
+      color: var(--fg-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .product-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.35rem 0.85rem;
+      background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(255,210,63,0.2));
+      border: 1px solid var(--accent-1);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 2rem;
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .footer p { margin: 0.5rem 0; }
+
+    .footer .disclaimer {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      font-style: italic;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: var(--fg-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: color 0.2s ease;
+    }
+
+    .social-links a:hover { color: var(--accent-1); }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .blob, .sparkle, .hero-badge, .product-card {
+        animation: none !important;
+      }
+      .product-card { opacity: 1; transform: none; }
+    }
+
+    /* Focus styles */
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--accent-2);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <div class="sparkles" aria-hidden="true" id="sparkles"></div>
+
+  <main>
+    <header class="hero">
+      <span class="hero-badge">Официален дистрибутор на фурфур</span>
+      <h1>БГ Иновации <span class="tm">™</span></h1>
+      <p class="subtitle">Продукти, които решават проблеми, които нямате, с технологии, които не съществуват</p>
+      <p class="tagline">Създадено с ♥ и много ракия в България</p>
+    </header>
+
+    <section class="products" aria-label="Нашите иновативни продукти">
+      <article class="product-card">
+        <div class="product-image">
+          <img src="img1.png" alt="Баба-Контролер 3000 - робот баба с таблетка в ръка" loading="lazy">
+        </div>
+        <h2 class="product-name">Баба-Контролер 3000<span class="tm">™</span></h2>
+        <p class="product-desc">AI баба, която ти казва "облечи се, че ще ухванеш студ" дори през юли, ти слага шапка на криво и те пита "кога ще се ожениш?" при всяка промяна на времето.</p>
+        <span class="product-tag">Патентирана фурфур-технология</span>
+      </article>
+
+      <article class="product-card">
+        <div class="product-image">
+          <img src="img2.png" alt="Ракълътът за Излъгане на Мама - устройство с бутони за извинения" loading="lazy">
+        </div>
+        <h2 class="product-name">Ракълът за Излъгане на Мама<span class="tm">™</span></h2>
+        <p class="product-desc">Генерира невидими извинения: "батерията умира", "нямам сигнал в метрото", "работих до късно", "загубих се в мола" — всички с глас, който звучи безумно доверително.</p>
+        <span class="product-tag">100% убедително гарантирано</span>
+      </article>
+
+      <article class="product-card">
+        <div class="product-image">
+          <img src="img3.png" alt="Кебапче-Компас - GPS устройство сочещ към кебапче" loading="lazy">
+        </div>
+        <h2 class="product-name">Кебапче-Компас<span class="tm">™</span></h2>
+        <p class="product-desc">Единственият GPS, който НЕ знае за автомагистрали, паркинзи или бензиностанции — знае само къде е най-вкусното кебапче в 50-километров радиус. Пресмята маршрут по чучурашка.</p>
+        <span class="product-tag">Навигация по миризма</span>
+      </article>
+
+      <article class="product-card">
+        <div class="product-image">
+          <img src="img4.png" alt="Сензор Кога Ожениване - радар детектиращ леля" loading="lazy">
+        </div>
+        <h2 class="product-name">Сензор "Кога Ще Се Ожениш?"<span class="tm">™</span></h2>
+        <p class="product-desc">Детектира, когато леля ти се надигне, за да попита за семейния ти статус. Активира тъмна завеса, пуска темата от "Mission Impossible" и ти отваря аварийна врата към двора.</p>
+        <span class="product-tag">Редът на "***"</span>
+      </article>
+
+      <article class="product-card">
+        <div class="product-image">
+          <img src="img5.png" alt="Чушур-Антигравит - ясто летящо на тавана" loading="lazy">
+        </div>
+        <h2 class="product-name">Чушур-Антигравит<span class="tm">™</span></h2>
+        <p class="product-desc">Устройство, което усеща гравитационното поле на свекърва ти. Когато тя стъпи през прага, чушурът излита към тавана и си стои там, докато тя не си замине — с опция за автосмукач.</p>
+        <span class="product-tag">Нютон се обръща в гроба си</span>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <p>© 2025 БГ Иновации <span class="tm">™</span> — Всички права запазени (и някои измислени)</p>
+      <p class="disclaimer">Нито един продукт не е реален. Не се опитвайте да купувате. Сериозно.</p>
+      <div class="social-links">
+        <a href="#">Facebook на баба</a>
+        <a href="#">Instagram на кебапчето</a>
+        <a href="#">LinkedIn на чушура</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Sparkle generator
+    const sparklesContainer = document.getElementById('sparkles');
+    const colors = ['#ff6b35', '#ffd23f', '#4ecdc4', '#ff6b9d'];
+
+    function createSparkle() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      sparkle.style.animationDelay = Math.random() * 3 + 's';
+      sparkle.style.animationDuration = (2 + Math.random() * 2) + 's';
+      sparklesContainer.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 5000);
+    }
+
+    // Create initial sparkles
+    for (let i = 0; i < 15; i++) {
+      setTimeout(createSparkle, i * 200);
+    }
+
+    // Continue generating
+    setInterval(createSparkle, 800);
+
+    // Intersection Observer for card animations
+    const cards = document.querySelectorAll('.product-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    cards.forEach(card => {
+      card.style.animationPlayState = 'paused';
+      observer.observe(card);
+    });
+
+    // Image error handling - show placeholder
+    document.querySelectorAll('.product-image img').forEach(img => {
+      img.addEventListener('error', function() {
+        this.style.display = 'none';
+        const placeholder = document.createElement('div');
+        placeholder.className = 'placeholder';
+        placeholder.textContent = this.alt + ' (image not found)';
+        this.parentNode.appendChild(placeholder);
+      });
+    });
+  </script>
+</body>
+</html>
