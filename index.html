@@ -1,465 +1,1475 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>БГ Иновации — Продукти, които не знаехте, че ви трябват</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+  <title>БГ Иновации — Български технологии за български проблеми</title>
+  <meta name="description" content="Пет продукта. Нула практическа полза. Безкомпромисно качество. От 2026.">
+  <meta property="og:title" content="БГ Иновации — Български технологии за български проблеми">
+  <meta property="og:description" content="Пет продукта. Нула практическа полза. Безкомпромисно качество.">
+  <meta property="og:image" content="https://4uk4a2.github.io/bg-inovacia/img1.png">
+  <meta property="og:url" content="https://4uk4a2.github.io/bg-inovacia/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="bg_BG">
   <style>
-    :root {
-      --bg: #0f0f1a;
-      --bg-card: #1a1a2e;
-      --fg: #f5f0e8;
-      --fg-muted: #a8a090;
-      --accent-1: #ff6b35;
-      --accent-2: #ffd23f;
-      --accent-3: #4ecdc4;
-      --accent-4: #ff6b9d;
-      --card-border: #2a2a4a;
-      --glow-1: rgba(255, 107, 53, 0.4);
-      --glow-2: rgba(255, 210, 63, 0.3);
-      --glow-3: rgba(78, 205, 196, 0.3);
+    /* ═══════════════════════════════════════════════════
+       FONTS — self-hosted, no Google Fonts CDN (GDPR)
+       ═══════════════════════════════════════════════════ */
+    @font-face {
+      font-family: 'Sofia Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(fonts/sofia-sans-cyrillic.woff2) format('woff2');
+      unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+    @font-face {
+      font-family: 'Sofia Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(fonts/sofia-sans-latin.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'Sofia Sans';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url(fonts/sofia-sans-cyrillic.woff2) format('woff2');
+      unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+    @font-face {
+      font-family: 'Sofia Sans';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url(fonts/sofia-sans-latin.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'Sofia Sans';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url(fonts/sofia-sans-cyrillic.woff2) format('woff2');
+      unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+    @font-face {
+      font-family: 'Sofia Sans';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url(fonts/sofia-sans-latin.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(fonts/jetbrains-mono-cyrillic.woff2) format('woff2');
+      unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(fonts/jetbrains-mono-latin.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
     }
 
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #fdfbf7;
-        --bg-card: #ffffff;
-        --fg: #1a1a2e;
-        --fg-muted: #5a5550;
-        --card-border: #e8e0d8;
-        --glow-1: rgba(255, 107, 53, 0.2);
-        --glow-2: rgba(255, 210, 63, 0.4);
-        --glow-3: rgba(78, 205, 196, 0.2);
+    /* ═══════════════════════════════════════════════════
+       CSS CUSTOM PROPERTIES — Light / Dark
+       ═══════════════════════════════════════════════════ */
+    :root {
+      --bg: #F7F7F5;
+      --bg-surface: #FFFFFF;
+      --fg: #111418;
+      --fg-muted: #4B5563;
+      --accent: #1D4ED8;
+      --accent-hover: #1E40AF;
+      --gag-red: #DC2626;
+      --border: #E5E7EB;
+      --radius: 12px;
+      --font-body: 'Sofia Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+      color-scheme: light dark;
+    }
+
+    [data-theme="dark"],
+    :root:not([data-theme="light"]) {
+      /* auto dark via prefers-color-scheme */
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0B0D10;
+        --bg-surface: #12151A;
+        --fg: #E8EAED;
+        --fg-muted: #9CA3AF;
+        --accent: #60A5FA;
+        --accent-hover: #93C5FD;
+        --gag-red: #EF4444;
+        --border: #1F2937;
       }
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    [data-theme="dark"] {
+      --bg: #0B0D10;
+      --bg-surface: #12151A;
+      --fg: #E8EAED;
+      --fg-muted: #9CA3AF;
+      --accent: #60A5FA;
+      --accent-hover: #93C5FD;
+      --gag-red: #EF4444;
+      --border: #1F2937;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       RESET & BASE
+       ═══════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: var(--font-body);
       background: var(--bg);
       color: var(--fg);
-      min-height: 100vh;
+      font-size: 1rem;
       line-height: 1.6;
-      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Animated background blobs */
-    .bg-blobs {
+    img { max-width: 100%; height: auto; display: block; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Skip to content */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      z-index: 10000;
+      font-weight: 600;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 1rem;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       COOKIE BANNER (fake)
+       ═══════════════════════════════════════════════════ */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      z-index: 9999;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      box-shadow: 0 -4px 20px rgba(0,0,0,.08);
+      animation: slideUp 0.4s ease-out;
+    }
+    .cookie-banner[hidden] { display: none; }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .cookie-banner p {
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .cookie-banner button {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.5rem 1.25rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: var(--bg-surface);
+      color: var(--fg);
+      cursor: pointer;
+      min-height: 44px;
+      min-width: 44px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .cookie-banner button:hover {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+    }
+    .cookie-banner .btn-accept {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .cookie-banner .btn-accept:hover {
+      background: var(--accent-hover);
+    }
+
+    /* ═══════════════════════════════════════════════════
+       HEADER (sticky)
+       ═══════════════════════════════════════════════════ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 247, 245, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .site-header {
+        background: rgba(11, 13, 16, 0.85);
+      }
+    }
+    [data-theme="dark"] .site-header {
+      background: rgba(11, 13, 16, 0.85);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+
+    .site-header.scrolled .header-inner {
+      padding: 0.5rem 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--fg);
+      text-decoration: none;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+    .logo:hover { text-decoration: none; }
+    .logo .version {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 400;
+      color: var(--fg-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--fg); text-decoration: none; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.6rem 1.5rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      min-height: 44px;
+      min-width: 44px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn:hover { text-decoration: none; }
+    .btn:active { transform: scale(0.97); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--accent-hover); color: #fff; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--accent); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      min-height: 44px;
+      min-width: 44px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--fg);
+      margin: 5px 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .mobile-nav {
+      display: none;
       position: fixed;
       inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
+      background: var(--bg);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
     }
-
-    .blob {
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--fg);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+    .mobile-nav .close-btn {
       position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: var(--fg);
+      cursor: pointer;
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
       border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.15;
-      animation: float 20s ease-in-out infinite;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0;
     }
 
-    .blob-1 { width: 400px; height: 400px; background: var(--accent-1); top: -100px; left: -100px; animation-delay: 0s; }
-    .blob-2 { width: 300px; height: 300px; background: var(--accent-2); bottom: 20%; right: -50px; animation-delay: -7s; }
-    .blob-3 { width: 350px; height: 350px; background: var(--accent-3); top: 40%; left: 50%; animation-delay: -14s; }
-    .blob-4 { width: 250px; height: 250px; background: var(--accent-4); bottom: 10%; left: 10%; animation-delay: -5s; }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25% { transform: translate(30px, -20px) scale(1.05); }
-      50% { transform: translate(-20px, 30px) scale(0.95); }
-      75% { transform: translate(25px, 25px) scale(1.02); }
+    @media (max-width: 639px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .header-cta-desktop { display: none; }
     }
 
-    /* Sparkles */
-    .sparkles {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .sparkle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: var(--accent-2);
-      border-radius: 50%;
-      animation: twinkle 3s ease-in-out infinite;
-      opacity: 0;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0; transform: scale(0); }
-      50% { opacity: 1; transform: scale(1); }
-    }
-
-    /* Main content */
-    main {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem 5rem;
-    }
-
-    /* Hero */
+    /* ═══════════════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════════════ */
     .hero {
       text-align: center;
-      margin-bottom: 4rem;
-      padding: 2rem 0;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-      color: var(--bg);
-      padding: 0.5rem 1.5rem;
-      border-radius: 100px;
-      font-weight: 800;
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 4px 20px var(--glow-1);
-      animation: pulse 3s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 4px 20px var(--glow-1); }
-      50% { box-shadow: 0 4px 30px var(--glow-2); }
+      padding: clamp(3rem, 8vw, 6rem) 0;
     }
 
     .hero h1 {
-      font-family: 'Comfortaa', cursive;
-      font-weight: 900;
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      line-height: 1.1;
-      background: linear-gradient(135deg, var(--fg) 0%, var(--accent-2) 40%, var(--accent-3) 70%, var(--accent-4) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
       margin-bottom: 1rem;
-      text-shadow: none;
+      max-width: 700px;
+      margin-inline: auto;
     }
 
     .hero .subtitle {
-      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
       color: var(--fg-muted);
       max-width: 600px;
       margin: 0 auto 2rem;
       font-weight: 400;
     }
 
-    .hero .tagline {
-      font-family: 'Comfortaa', cursive;
-      font-weight: 700;
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: var(--accent-1);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-bottom: 2rem;
     }
 
-    /* Products Grid */
+    .hero-trust {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--fg-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    .hero-trust .footnote {
+      display: block;
+      margin-top: 0.25rem;
+      font-size: 0.65rem;
+      opacity: 0.7;
+    }
+
+    /* Hero image */
+    .hero-image {
+      max-width: 400px;
+      margin: 2rem auto 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    .hero-image img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-image {
+        animation: gentleFloat 6s ease-in-out infinite;
+      }
+    }
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       TRUST BAR
+       ═══════════════════════════════════════════════════ */
+    .trust-bar {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--fg-muted);
+      text-align: center;
+      padding: 1rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 1.5rem;
+    }
+    .trust-bar span::before {
+      content: '│';
+      margin-right: 1.5rem;
+      opacity: 0.3;
+    }
+    .trust-bar span:first-child::before { display: none; }
+
+    /* ═══════════════════════════════════════════════════
+       SECTION TITLES
+       ═══════════════════════════════════════════════════ */
+    .section-title {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      color: var(--fg);
+    }
+
+    /* ═══════════════════════════════════════════════════
+       PRODUCT CARDS
+       ═══════════════════════════════════════════════════ */
     .products {
+      padding: clamp(3rem, 6vw, 5rem) 0;
+    }
+
+    .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 640px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
     }
 
     .product-card {
-      background: var(--bg-card);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 2rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
       position: relative;
-      overflow: hidden;
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
-      animation: cardEnter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      contain: content;
     }
 
-    .product-card:nth-child(1) { animation-delay: 0.1s; }
-    .product-card:nth-child(2) { animation-delay: 0.2s; }
-    .product-card:nth-child(3) { animation-delay: 0.3s; }
-    .product-card:nth-child(4) { animation-delay: 0.4s; }
-    .product-card:nth-child(5) { animation-delay: 0.5s; }
+    @media (prefers-reduced-motion: no-preference) {
+      .product-card {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+      }
+      .product-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-    @keyframes cardEnter {
-      from { opacity: 0; transform: translateY(30px) scale(0.95); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
+    @media (prefers-reduced-motion: reduce) {
+      .product-card {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     .product-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      border-color: var(--accent-1);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px var(--glow-1);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(0,0,0,.08);
     }
 
-    .product-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
-      opacity: 0;
-      transition: opacity 0.3s ease;
+    .product-badge {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 400;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      color: var(--fg-muted);
+      display: inline-block;
+      margin-bottom: 1rem;
     }
-
-    .product-card:hover::before { opacity: 1; }
+    .product-badge.status-available { border-color: #16a34a; color: #16a34a; }
+    .product-badge.status-pending { border-color: #ca8a04; color: #ca8a04; }
+    .product-badge.status-pilot { border-color: var(--accent); color: var(--accent); }
+    .product-badge.status-sold-out { border-color: var(--gag-red); color: var(--gag-red); }
+    .product-badge.status-soon { border-color: var(--fg-muted); }
 
     .product-image {
       width: 100%;
       aspect-ratio: 4/3;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,210,63,0.1));
-      border: 2px dashed var(--card-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
+      border-radius: 8px;
       overflow: hidden;
-      position: relative;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,.1);
     }
-
     .product-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.4s ease;
     }
-
-    .product-card:hover .product-image img { transform: scale(1.05); }
-
-    .product-image .placeholder {
-      color: var(--fg-muted);
-      font-size: 0.9rem;
-      text-align: center;
-      padding: 1rem;
-      font-style: italic;
+    .product-card:hover .product-image img {
+      transform: scale(1.02);
     }
 
     .product-name {
-      font-family: 'Comfortaa', cursive;
-      font-weight: 800;
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-      color: var(--fg);
+      font-weight: 600;
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
     }
 
-    .product-name .tm {
-      font-size: 0.6em;
-      vertical-align: super;
-      color: var(--accent-2);
-      font-weight: 400;
-    }
-
-    .product-desc {
+    .product-body {
       color: var(--fg-muted);
       font-size: 0.95rem;
-      line-height: 1.7;
+      line-height: 1.65;
+      margin-bottom: 1rem;
     }
 
-    .product-tag {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.35rem 0.85rem;
-      background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(255,210,63,0.2));
-      border: 1px solid var(--accent-1);
-      border-radius: 100px;
+    .product-specs {
+      font-family: var(--font-mono);
       font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      margin-top: 4rem;
-      padding: 2rem;
       color: var(--fg-muted);
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+
+    .product-steps {
       font-size: 0.9rem;
-      border-top: 1px solid var(--card-border);
+      color: var(--fg-muted);
+      margin-bottom: 1rem;
+      padding-left: 0;
+      list-style: none;
+      counter-reset: step;
+    }
+    .product-steps li {
+      counter-increment: step;
+      padding: 0.4rem 0;
+      padding-left: 2rem;
+      position: relative;
+    }
+    .product-steps li::before {
+      content: counter(step, decimal-leading-zero) ".";
+      position: absolute;
+      left: 0;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 700;
     }
 
-    .footer p { margin: 0.5rem 0; }
+    .product-price {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .product-price .bgn {
+      font-weight: 400;
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+    }
 
-    .footer .disclaimer {
-      font-size: 0.75rem;
-      opacity: 0.7;
+    .product-cta {
+      margin-bottom: 0.75rem;
+    }
+
+    .product-footnote {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--fg-muted);
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+
+    .product-testimonial {
       font-style: italic;
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+      color: var(--fg);
+      font-size: 0.95rem;
+    }
+    .product-testimonial cite {
+      display: block;
+      font-style: normal;
+      font-size: 0.8rem;
+      color: var(--fg-muted);
+      margin-top: 0.5rem;
     }
 
+    /* ═══════════════════════════════════════════════════
+       REVIEWS
+       ═══════════════════════════════════════════════════ */
+    .reviews {
+      padding: clamp(3rem, 6vw, 5rem) 0;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .review-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .review-stars {
+      color: #f59e0b;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: 2px;
+    }
+    .review-text {
+      font-size: 0.95rem;
+      color: var(--fg);
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+    .review-author {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--fg-muted);
+    }
+
+    /* ═══════════════════════════════════════════════════
+       FAQ
+       ═══════════════════════════════════════════════════ */
+    .faq {
+      padding: clamp(3rem, 6vw, 5rem) 0;
+    }
+
+    .faq-list {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.25rem 2.5rem 1.25rem 0;
+      text-align: left;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--fg);
+      cursor: pointer;
+      position: relative;
+      min-height: 44px;
+    }
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--fg-muted);
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-question::after {
+      content: '−';
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .faq-answer-inner {
+      padding: 0 0 1.25rem;
+      color: var(--fg-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       FINAL CTA
+       ═══════════════════════════════════════════════════ */
+    .final-cta {
+      background: var(--fg);
+      color: var(--bg);
+      text-align: center;
+      padding: clamp(3rem, 8vw, 6rem) 1rem;
+      border-radius: var(--radius);
+      margin: 2rem 0;
+    }
+    .final-cta h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .final-cta p {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      margin-bottom: 2rem;
+    }
+    .final-cta .btn-primary {
+      background: var(--bg);
+      color: var(--fg);
+    }
+    .final-cta .btn-primary:hover {
+      opacity: 0.9;
+    }
+    .final-cta .cta-footnote {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      opacity: 0.5;
+      margin-top: 1.5rem;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════ */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+      text-align: center;
+    }
+    .footer-logo {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    .footer-tagline {
+      font-size: 0.8rem;
+      color: var(--fg-muted);
+      margin-bottom: 1.5rem;
+    }
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    .footer-nav a {
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .footer-disclaimer {
+      font-size: 0.75rem;
+      color: var(--fg-muted);
+      opacity: 0.8;
+      max-width: 600px;
+      margin: 0 auto 1rem;
+      line-height: 1.5;
+    }
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .social-links a {
+      color: var(--fg-muted);
+      font-size: 0.8rem;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .social-links a:hover { color: var(--fg); }
+
+    /* ═══════════════════════════════════════════════════
+       DIALOG (order modal)
+       ═══════════════════════════════════════════════════ */
+    dialog {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      max-width: 420px;
+      width: 90%;
+      background: var(--bg-surface);
+      color: var(--fg);
+      font-family: var(--font-body);
+    }
+    dialog::backdrop {
+      background: rgba(0,0,0,.5);
+    }
+    dialog h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    dialog p {
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    dialog code {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      background: var(--bg);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+    }
+    dialog .small {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--fg-muted);
+    }
+    dialog button {
       margin-top: 1rem;
     }
 
-    .social-links a {
-      color: var(--fg-muted);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.85rem;
-      transition: color 0.2s ease;
-    }
-
-    .social-links a:hover { color: var(--accent-1); }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      .blob, .sparkle, .hero-badge, .product-card {
-        animation: none !important;
-      }
-      .product-card { opacity: 1; transform: none; }
-    }
-
-    /* Focus styles */
-    a:focus-visible, button:focus-visible {
-      outline: 3px solid var(--accent-2);
+    /* ═══════════════════════════════════════════════════
+       FOCUS STYLES
+       ═══════════════════════════════════════════════════ */
+    :focus-visible {
+      outline: 3px solid var(--accent);
       outline-offset: 3px;
       border-radius: 4px;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       REDUCED MOTION
+       ═══════════════════════════════════════════════════ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       PRICE NOTE (shared across cards)
+       ═══════════════════════════════════════════════════ */
+    .price-note {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--fg-muted);
+      opacity: 0.7;
+      text-align: center;
+      margin-top: 1.5rem;
     }
   </style>
 </head>
 <body>
-  <div class="bg-blobs" aria-hidden="true">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-    <div class="blob blob-4"></div>
+
+  <a href="#main-content" class="skip-link">Към съдържанието</a>
+
+  <!-- ═══════════════════════════════════════════════
+       COOKIE BANNER
+       ═══════════════════════════════════════════════ -->
+  <div class="cookie-banner" id="cookie-banner" role="alert" aria-live="polite">
+    <p id="cookie-text">🍪 Този сайт използва бисквитки. Баба ти ги е изпечела.</p>
+    <button class="btn-accept" id="cookie-accept">Приемам</button>
+    <button id="cookie-decline">Отказвам, но баба ще се обиди</button>
   </div>
 
-  <div class="sparkles" aria-hidden="true" id="sparkles"></div>
+  <!-- ═══════════════════════════════════════════════
+       HEADER
+       ═══════════════════════════════════════════════ -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo" aria-label="БГ Иновации — начало">
+        БГ Иновации <span class="version">v2026.1</span>
+      </a>
+      <nav aria-label="Основна навигация">
+        <ul class="nav-links">
+          <li><a href="#products">Продукти</a></li>
+          <li><a href="#reviews">Отзиви</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><button class="theme-toggle" id="theme-toggle" aria-label="Превключи тъмен/светъл режим" title="Превключи тъмен/светъл режим">☀</button></li>
+        </ul>
+      </nav>
+      <a href="#products" class="btn btn-primary header-cta-desktop">Резервирай</a>
+      <button class="hamburger" id="hamburger" aria-label="Отвори менюто" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-  <main>
-    <header class="hero">
-      <span class="hero-badge">Официален дистрибутор на бабин интелилект</span>
-      <h1>БГ Иновации <span class="tm">™</span></h1>
-      <p class="subtitle">Продукти, които решават проблеми, които нямате, с технологии, които не съществуват</p>
-      <p class="tagline">Създадено с ♥ и много ракия в България</p>
-    </header>
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Мобилно меню">
+    <button class="close-btn" id="mobile-close" aria-label="Затвори менюто">✕</button>
+    <a href="#products">Продукти</a>
+    <a href="#reviews">Отзиви</a>
+    <a href="#faq">FAQ</a>
+    <a href="#products" class="btn btn-primary">Резервирай</a>
+  </div>
 
-    <section class="products" aria-label="Нашите иновативни продукти">
-      <article class="product-card">
-        <div class="product-image">
-          <img src="img1.png" alt="Баба-Контролер 3000 - робот баба с таблетка в ръка" loading="lazy">
-        </div>
-        <h2 class="product-name">Баба-Контролер 3000<span class="tm">™</span></h2>
-        <p class="product-desc">Баба с изкуствен интелект, която ти казва "облечи се, че ще престудиш" дори през юли, ти слага шапка настрана и те пита "кога ще се ожениш?" при всяка промяна на времето.</p>
-        <span class="product-tag">Патентована бабина логика</span>
-      </article>
+  <!-- ═══════════════════════════════════════════════
+       MAIN CONTENT
+       ═══════════════════════════════════════════════ -->
+  <main id="main-content">
 
-      <article class="product-card">
-        <div class="product-image">
-          <img src="img2.png" alt="Излъгачът за Излъгане на Мама - устройство с бутони за извинения" loading="lazy">
-        </div>
-        <h2 class="product-name">Излъгачът за мама<span class="tm">™</span></h2>
-        <p class="product-desc">Генерира извинения наготово: "батерията умира", "нямам сигнал в метрото", "работих до късно", "загубих се в мола" — всички с глас, който звучи безумно доверително.</p>
-        <span class="product-tag">100% гарантирано</span>
-      </article>
-
-      <article class="product-card">
-        <div class="product-image">
-          <img src="img3.png" alt="Кебапче-Компас - GPS устройство сочещ към кебапче" loading="lazy">
-        </div>
-        <h2 class="product-name">Кебапче-Компас<span class="tm">™</span></h2>
-        <p class="product-desc">Единственият GPS, който НЕ знае за автомагистрали, паркинги или бензиностанции — знае само къде е най-вкусното кебапче в 50-километъров радиус. Пресмята маршрут по мирис.</p>
-        <span class="product-tag">Навигация по мирис</span>
-      </article>
-
-      <article class="product-card">
-        <div class="product-image">
-          <img src="img4.png" alt="Сензор Кога Ожениване - радар детектиращ леля" loading="lazy">
-        </div>
-        <h2 class="product-name">Сензор "Кога Ще Се Ожениш?"<span class="tm">™</span></h2>
-        <p class="product-desc">Детектира, когато леля ти се надигне, за да попита за семейния ти статус. Активира защитата, пуска темата на "Mission Impossible" и ти отваря аварийен изход към двора.</p>
-        <span class="product-tag">Мисия: Невъзможна за лели</span>
-      </article>
-
-      <article class="product-card">
-        <div class="product-image">
-          <img src="img5.png" alt="Подушка-Антигравит - подушка летяща на тавана" loading="lazy">
-        </div>
-        <h2 class="product-name">Подушка-Антигравит<span class="tm">™</span></h2>
-        <p class="product-desc">Устройство, което усеща гравитационното поле на свекърва ти. Когато тя стъпи през прага, подушката излетява към тавана и си стои там, докато тя не си замине — с опция за смукач.</p>
-        <span class="product-tag">Нютон се обръща в гроба си</span>
-      </article>
+    <!-- HERO -->
+    <section class="hero container">
+      <h1>Български технологии за проблеми, за които останалият свят дори не подозира.</h1>
+      <p class="subtitle">Пет продукта. Нула практическа полза. Безкомпромисно качество.</p>
+      <div class="hero-cta">
+        <a href="#products" class="btn btn-primary">Разгледай продуктите</a>
+        <a href="#faq" class="btn btn-secondary">Научи повече</a>
+      </div>
+      <p class="hero-trust">
+        Използвано от 12 000+ семейства* &nbsp;│&nbsp; Съвместимо с България &nbsp;│&nbsp; Без скрити такси. Засега.
+        <span class="footnote">* Данните са приблизителни и включват семейства, които не са наясно, че участват.</span>
+      </p>
+      <div class="hero-image">
+        <img src="img1.png" width="400" height="300" alt="Баба Pro — робот баба с таблет, показващ 30°C, в кухня с баница на масата" decoding="async">
+      </div>
     </section>
 
-    <footer class="footer">
-      <p>© 2025 БГ Иновации <span class="tm">™</span> — Всички права запазени (и някои измислени)</p>
-      <p class="disclaimer">Нито един продукт не е реален. Не се опитвайте да купувате. Сериозно.</p>
-      <div class="social-links">
-        <a href="#">Facebook на баба</a>
-        <a href="#">Instagram на кебапчето</a>
-        <a href="#">LinkedIn на подушката</a>
+    <!-- TRUST BAR -->
+    <div class="trust-bar container" aria-label="Доверие и сертификация">
+      <span>Одобрено от поне един чичо</span>
+      <span>Работи дори при слаб интернет</span>
+      <span>Без нужда от нотариус</span>
+      <span>Тествано на жива свекърва</span>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         PRODUCTS
+         ═══════════════════════════════════════════════ -->
+    <section class="products container" id="products">
+      <h2 class="section-title">Нашите продукти</h2>
+
+      <div class="products-grid">
+
+        <!-- ─── PRODUCT 1: Баба Pro ─── Apple product page стил -->
+        <article class="product-card" id="baba-pro">
+          <span class="product-badge status-available">В наличност</span>
+          <div class="product-image">
+            <img src="img1.png" width="400" height="300" alt="Баба Pro — робот баба с таблет, показващ 30°C, в кухня с баница на масата" loading="lazy" decoding="async">
+          </div>
+          <h3 class="product-name">Баба Pro</h3>
+          <p class="product-body">Баба Pro преосмисля домашния комфорт. С вграден AI алгоритъм за анализ на атмосферни условия и семеен контекст, устройството определя дали си облякъл потника — преди ти да си станал от леглото.</p>
+          <div class="product-specs">Точност на предвиждане: 97,3%* │ Време за реакция: 0,4 сек │ Съвместимост: всички видове потници │ AI модел: BabaGPT v3.1</div>
+          <p class="product-price">149,99 € <span class="bgn">(293,36 лв.)</span></p>
+          <div class="product-cta">
+            <button class="btn btn-primary order-btn">Резервирай ранен достъп</button>
+          </div>
+          <p class="product-footnote">* При условие, че потникът съществува.</p>
+        </article>
+
+        <!-- ─── PRODUCT 2: Извинител Pro Max ─── Testimonial-led стил -->
+        <article class="product-card" id="izvinitel">
+          <span class="product-badge status-pending">Очаква одобрение</span>
+          <div class="product-image">
+            <img src="img2.png" width="400" height="300" alt="Извинител Pro Max — устройство с цветни бутони за извинения и термален принтер" loading="lazy" decoding="async">
+          </div>
+          <h3 class="product-name">Извинител Pro Max</h3>
+          <blockquote class="product-testimonial">
+            „Първите две седмици бях скептичен. После ми се обади майка ми и тя <em>повярва</em>."
+            <cite>— Виктор, 34, София</cite>
+          </blockquote>
+          <p class="product-body">Извинител Pro Max анализира час, ден, сезон и вероятност за въпроса „ял ли си?" и генерира извинение с 94,7% убедителност.</p>
+          <div class="product-specs">12 предварително заредени извинения │ Термален принтер за доказателства │ Батерия: 3 обаждания │ Обучен на 47 000 обаждания на български майки</div>
+          <p class="product-price">89,99 € <span class="bgn">(175,95 лв.)</span></p>
+          <div class="product-cta">
+            <button class="btn btn-primary order-btn">Резервирай ранен достъп</button>
+          </div>
+          <p class="product-footnote">* Резултатите варират в зависимост от снахата.</p>
+        </article>
+
+        <!-- ─── PRODUCT 3: Кебапче-компас Ultra ─── Specs-first стил -->
+        <article class="product-card" id="kebapche">
+          <span class="product-badge status-pilot">Пилотна програма</span>
+          <div class="product-image">
+            <img src="img3.png" width="400" height="300" alt="Кебапче-компас Ultra — GPS навигатор с гигантско кебапче като destination, карта от грил следи" loading="lazy" decoding="async">
+          </div>
+          <h3 class="product-name">Кебапче-компас Ultra</h3>
+          <div class="product-specs">Тип сензор:        олфакторен масив v3
+Обхват:            до 2,4 км по вятъра
+Точност:           ±3 метра (±47 метра при кебапче от вчера)
+Поддържани обекти: кебапче, кюфте, наденица, скара (mixed)
+Не поддържа:       салата</div>
+          <p class="product-body">Единствената навигация, която приоритизира обекти от категория „скара" пред магистрала.</p>
+          <p class="product-price">199,99 € <span class="bgn">(391,14 лв.)</span></p>
+          <div class="product-cta">
+            <button class="btn btn-primary order-btn">Резервирай ранен достъп</button>
+          </div>
+          <p class="product-footnote">* Навигационният модул приоритизира обекти от категория „скара" с точност ±3 метра.</p>
+        </article>
+
+        <!-- ─── PRODUCT 4: Леля-сензор Air ─── Стъпково (how it works) стил -->
+        <article class="product-card" id="lelya-senzor">
+          <span class="product-badge status-sold-out">Изчерпано — следваща партида: лятото</span>
+          <div class="product-image">
+            <img src="img4.png" width="400" height="300" alt="Леля-сензор Air — футуристичен радар, детектиращ леля, с дим и аварийни изходи" loading="lazy" decoding="async">
+          </div>
+          <h3 class="product-name">Леля-сензор Air</h3>
+          <ol class="product-steps">
+            <li>Сензорът засича характерна вокална честота в радиус 20 метра.</li>
+            <li>AI класификаторът определя типа въпрос (93,1% — „кога ще се ожениш?").</li>
+            <li>Автоматично пуска тема на Mission Impossible.</li>
+            <li>Отваря аварийния изход към балкона.</li>
+          </ol>
+          <div class="product-specs">Време от детекция до евакуация: 8,3 секунди │ Фалшиви аларми: 2 на месец (обикновено чичо)</div>
+          <p class="product-price">249,99 € <span class="bgn">(488,93 лв.)</span></p>
+          <div class="product-cta">
+            <button class="btn btn-primary order-btn" disabled aria-disabled="true" title="Изчерпано">Изчерпано</button>
+          </div>
+          <p class="product-footnote">* Одобрено по процедура №БГИ-2026-041.</p>
+        </article>
+
+        <!-- ─── PRODUCT 5: Възглавница-антигравитация ─── Бележка-под-линия стил -->
+        <article class="product-card" id="vazglavnica">
+          <span class="product-badge status-soon">Скоро</span>
+          <div class="product-image">
+            <img src="img5.png" width="400" height="300" alt="Възглавница-антигравитация — възглавница с ракетни двигатели, летяща до тавана, докато свекърва влиза" loading="lazy" decoding="async">
+          </div>
+          <h3 class="product-name">Възглавница-антигравитация</h3>
+          <p class="product-body">Възглавница-антигравитация детектира промяна в гравитационното поле на помещението¹ и при критичен масив² напуска дивана с достойнство³.</p>
+          <p class="product-footnote">
+            ¹ „Промяна в гравитационното поле" е вътрешна терминология за „влезе свекървата".<br>
+            ² Критичен масив = 1 (една) свекърва.<br>
+            ³ „С достойнство" означава вертикален полет до тавана с използване на миниатюрни ракетни двигатели.
+          </p>
+          <p class="product-price">179,99 € <span class="bgn">(351,99 лв.)</span></p>
+          <div class="product-cta">
+            <button class="btn btn-secondary order-btn">Запиши ме за известие</button>
+          </div>
+          <p class="product-footnote">* AI означава „Автоматична Иновация". Не питайте какво означава втората буква.</p>
+        </article>
+
       </div>
-    </footer>
+
+      <p class="price-note">* Цени в евро. Равностойност в лева по фиксирания курс 1,95583. Системата още не е ъпдейтнала.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         REVIEWS
+         ═══════════════════════════════════════════════ -->
+    <section class="reviews container" id="reviews">
+      <h2 class="section-title">Какво казват клиентите</h2>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars" aria-label="5 от 5 звезди">★★★★★</div>
+          <p class="review-text">„Първия месец мислех, че не работи. После осъзнах, че просто лелята е била в отпуска."</p>
+          <p class="review-author">— Николай, 38, Пловдив</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars" aria-label="4 от 5 звезди">★★★★☆</div>
+          <p class="review-text">„Една звезда по-малко, защото снахата пак не е доволна."</p>
+          <p class="review-author">— Пенка, 71, Търговище</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars" aria-label="5 от 5 звезди">★★★★★</div>
+          <p class="review-text">„Компасът ме отведе до скара в село, за което не знаех. 10/10 бих се изгубил отново."</p>
+          <p class="review-author">— Мартин, 29, Бургас</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars" aria-label="3 от 5 звезди">★★★☆☆</div>
+          <p class="review-text">„Три звезди. Възглавницата полетя, но удари полилея. Не е предвиден полилей в спецификациите."</p>
+          <p class="review-author">— Десислава, 44, Стара Загора</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         FAQ
+         ═══════════════════════════════════════════════ -->
+    <section class="faq container" id="faq">
+      <h2 class="section-title">Често задавани въпроси</h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Доставяте ли до село?</button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">Доставяме до всяко населено място с поне един чичо.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Какво става, ако леля ми научи за сензора?</button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">Леля-сензор Air има режим „самоунищожение" (изтрива се от историята на доставките).</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Работи ли извън България?</button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">Технически да. Практически — хуморът не се експортира.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Има ли гаранция?</button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">2 години или до първата пролита ракия, което от двете настъпи първо.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Мога ли да върна продукта?</button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">Да, но само ако го донесете лично. В работно време. Което е вторник от 10 до 11.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Как се обновява фърмуерът?</button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">Автоматично. Ако не — рестартирайте. Ако пак не — обадете се на майка си, тя знае.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Къде се намира офисът ви?</button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">На адреса. Отговаряме на телефона между 14:00 и 14:03 в дни с четна дата.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         FINAL CTA
+         ═══════════════════════════════════════════════ -->
+    <section class="container">
+      <div class="final-cta">
+        <h2>Бъдещето вече е тук.</h2>
+        <p>Има оригинална опаковка.</p>
+        <button class="btn btn-primary order-btn">Резервирай ранен достъп</button>
+        <p class="cta-footnote">* „Ранен достъп" означава, че ще научите първи, когато решим какво правим.</p>
+      </div>
+    </section>
+
   </main>
 
-  <script>
-    // Sparkle generator
-    const sparklesContainer = document.getElementById('sparkles');
-    const colors = ['#ff6b35', '#ffd23f', '#4ecdc4', '#ff6b9d'];
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-logo">БГ Иновации</p>
+      <p class="footer-tagline">Български технологии за български проблеми. От 2026.</p>
+      <nav aria-label="Навигация в долния колонтитул">
+        <ul class="footer-nav">
+          <li><a href="#products">Продукти</a></li>
+          <li><a href="#reviews">Отзиви</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <p class="footer-disclaimer">© 2026 БГ Иновации ООД. Всички права запазени. Продуктите не съществуват. Засега. Сайтът е сатиричен. Ако сте се опитали да поръчате — обадете се на баба си.</p>
+      <div class="social-links" aria-label="Социални мрежи">
+        <a href="#" title="Последвайте ни. Или не. Няма да проверяваме.">Facebook на баба</a>
+        <a href="#" title="Последвайте ни. Или не. Няма да проверяваме.">Instagram на кебапчето</a>
+        <a href="#" title="Последвайте ни. Или не. Няма да проверяваме.">LinkedIn на възглавницата</a>
+      </div>
+    </div>
+  </footer>
 
-    function createSparkle() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      const sparkle = document.createElement('div');
-      sparkle.className = 'sparkle';
-      sparkle.style.left = Math.random() * 100 + 'vw';
-      sparkle.style.top = Math.random() * 100 + 'vh';
-      sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
-      sparkle.style.animationDelay = Math.random() * 3 + 's';
-      sparkle.style.animationDuration = (2 + Math.random() * 2) + 's';
-      sparklesContainer.appendChild(sparkle);
-      setTimeout(() => sparkle.remove(), 5000);
-    }
+  <!-- ═══════════════════════════════════════════════
+       ORDER MODAL
+       ═══════════════════════════════════════════════ -->
+  <dialog id="order-modal" aria-labelledby="modal-title" aria-modal="true">
+    <h2 id="modal-title">Поръчката ви е приета.</h2>
+    <p>Номер на поръчка: <code id="order-number">#BG-2026-04817</code></p>
+    <p>Очаквайте обаждане от доставчика. Или от майка ви. Което от двете се случи първо.</p>
+    <p class="small">Средно време за доставка: 2–6 работни дни, в зависимост от настроението на системата.</p>
+    <button class="btn btn-primary" id="modal-close">Разбрах (затвори)</button>
+  </dialog>
 
-    // Create initial sparkles
-    for (let i = 0; i < 15; i++) {
-      setTimeout(createSparkle, i * 200);
-    }
+  <!-- ═══════════════════════════════════════════════
+       JAVASCRIPT
+       ═══════════════════════════════════════════════ -->
+  <script defer>
+    (function() {
+      'use strict';
 
-    // Continue generating
-    setInterval(createSparkle, 800);
+      /* ── Cookie Banner ── */
+      const banner = document.getElementById('cookie-banner');
+      const cookieText = document.getElementById('cookie-text');
+      const acceptBtn = document.getElementById('cookie-accept');
+      const declineBtn = document.getElementById('cookie-decline');
 
-    // Intersection Observer for card animations
-    const cards = document.querySelectorAll('.product-card');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animationPlayState = 'running';
+      if (localStorage.getItem('bg-cookie-seen')) {
+        banner.hidden = true;
+      }
+
+      acceptBtn.addEventListener('click', function() {
+        localStorage.setItem('bg-cookie-seen', '1');
+        banner.hidden = true;
+      });
+
+      declineBtn.addEventListener('click', function() {
+        cookieText.textContent = 'Баба те гледа разочаровано.';
+        declineBtn.hidden = true;
+        acceptBtn.textContent = 'Добре, приемам...';
+        setTimeout(function() {
+          localStorage.setItem('bg-cookie-seen', '1');
+          banner.hidden = true;
+        }, 2000);
+      });
+
+      /* ── Theme Toggle ── */
+      const toggle = document.getElementById('theme-toggle');
+      const saved = localStorage.getItem('bg-theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+        toggle.textContent = saved === 'dark' ? '☾' : '☀';
+      }
+
+      toggle.addEventListener('click', function() {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('bg-theme', next);
+        toggle.textContent = next === 'dark' ? '☾' : '☀';
+      });
+
+      /* ── Sticky Header shrink ── */
+      var header = document.getElementById('site-header');
+      var lastScroll = 0;
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 60) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+        lastScroll = window.scrollY;
+      }, { passive: true });
+
+      /* ── Mobile Nav ── */
+      var hamburger = document.getElementById('hamburger');
+      var mobileNav = document.getElementById('mobile-nav');
+      var mobileClose = document.getElementById('mobile-close');
+
+      hamburger.addEventListener('click', function() {
+        mobileNav.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        mobileClose.focus();
+      });
+
+      mobileClose.addEventListener('click', function() {
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.focus();
+      });
+
+      mobileNav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileNav.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      /* ── Order Modal ── */
+      var modal = document.getElementById('order-modal');
+      var modalCloseBtn = document.getElementById('modal-close');
+      var orderNumber = document.getElementById('order-number');
+      var lastFocused = null;
+
+      function openModal() {
+        lastFocused = document.activeElement;
+        // Random order number
+        var num = String(Math.floor(Math.random() * 90000) + 10000);
+        orderNumber.textContent = '#BG-2026-' + num;
+        modal.showModal();
+        history.pushState({ modal: true }, '');
+        modalCloseBtn.focus();
+      }
+
+      function closeModal() {
+        modal.close();
+        if (lastFocused) lastFocused.focus();
+      }
+
+      modalCloseBtn.addEventListener('click', closeModal);
+
+      modal.addEventListener('close', function() {
+        if (lastFocused) lastFocused.focus();
+      });
+
+      // Clicking backdrop closes
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+      });
+
+      // Back button closes modal
+      window.addEventListener('popstate', function(e) {
+        if (modal.open) {
+          modal.close();
         }
       });
-    }, { threshold: 0.1 });
 
-    cards.forEach(card => {
-      card.style.animationPlayState = 'paused';
-      observer.observe(card);
-    });
-
-    // Image error handling - show placeholder
-    document.querySelectorAll('.product-image img').forEach(img => {
-      img.addEventListener('error', function() {
-        this.style.display = 'none';
-        const placeholder = document.createElement('div');
-        placeholder.className = 'placeholder';
-        placeholder.textContent = this.alt + ' (image not found)';
-        this.parentNode.appendChild(placeholder);
+      // All order buttons
+      document.querySelectorAll('.order-btn').forEach(function(btn) {
+        if (!btn.disabled) {
+          btn.addEventListener('click', openModal);
+        }
       });
-    });
+
+      /* ── FAQ Accordion ── */
+      document.querySelectorAll('.faq-question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var item = btn.parentElement;
+          var answer = item.querySelector('.faq-answer');
+          var isOpen = item.classList.contains('open');
+
+          // Close all
+          document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+            openItem.classList.remove('open');
+            openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            openItem.querySelector('.faq-answer').style.maxHeight = null;
+          });
+
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+      });
+
+      /* ── Intersection Observer for card animations ── */
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var cards = document.querySelectorAll('.product-card');
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+
+        cards.forEach(function(card) {
+          observer.observe(card);
+        });
+      }
+
+      /* ── Anchor routing from OG redirect files ── */
+      if (window.location.hash) {
+        var target = document.querySelector(window.location.hash);
+        if (target) {
+          setTimeout(function() {
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 300);
+        }
+      }
+
+      /* ── Image error handling ── */
+      document.querySelectorAll('.product-image img, .hero-image img').forEach(function(img) {
+        img.addEventListener('error', function() {
+          this.style.display = 'none';
+          var placeholder = document.createElement('div');
+          placeholder.style.cssText = 'padding:2rem;text-align:center;color:var(--fg-muted);font-size:0.9rem;font-style:italic;';
+          placeholder.textContent = this.alt;
+          this.parentNode.appendChild(placeholder);
+        });
+      });
+
+    })();
   </script>
+
 </body>
 </html>
